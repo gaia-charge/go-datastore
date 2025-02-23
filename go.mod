@@ -1,4 +1,4 @@
-module github.com/satimoto/go-datastore
+module github.com/gaia-charge/go-datastore
 
 go 1.17
 
