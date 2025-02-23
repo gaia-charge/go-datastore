@@ -17,7 +17,7 @@ SELECT * FROM geo_locations
 
 -- name: ListGeoLocations :many
 SELECT * FROM geo_locations
-  ORDER BY name;
+  ORDER BY id;
 
 -- name: UpdateGeoLocation :one
 UPDATE geo_locations SET (
