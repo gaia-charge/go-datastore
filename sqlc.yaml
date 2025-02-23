@@ -13,8 +13,8 @@ sql:
         output_models_file_name: "model.go"
         overrides:
           - db_type: "geometry"
-            go_type: "github.com/satimoto/go-datastore/pkg/geom.Geometry4326"
+            go_type: "github.com/gaia-charge/go-datastore/pkg/geom.Geometry4326"
             nullable: false  
           - db_type: "geometry"
-            go_type: "github.com/satimoto/go-datastore/pkg/geom.NullGeometry4326"
+            go_type: "github.com/gaia-charge/go-datastore/pkg/geom.NullGeometry4326"
             nullable: true

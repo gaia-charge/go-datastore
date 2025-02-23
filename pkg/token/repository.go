@@ -3,7 +3,7 @@ package token
 import (
 	"context"
 
-	"github.com/satimoto/go-datastore/pkg/db"
+	"github.com/gaia-charge/go-datastore/pkg/db"
 )
 
 type TokenRepository interface {

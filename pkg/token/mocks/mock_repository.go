@@ -1,8 +1,8 @@
 package mocks
 
 import (
-	mocks "github.com/satimoto/go-datastore/pkg/db/mocks"
-	"github.com/satimoto/go-datastore/pkg/token"
+	mocks "github.com/gaia-charge/go-datastore/pkg/db/mocks"
+	"github.com/gaia-charge/go-datastore/pkg/token"
 )
 
 func NewRepository(repositoryService *mocks.MockRepositoryService) token.TokenRepository {

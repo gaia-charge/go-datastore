@@ -3,17 +3,17 @@ package mocks
 import (
 	"context"
 
-	"github.com/satimoto/go-datastore/pkg/db"
+	"github.com/gaia-charge/go-datastore/pkg/db"
 )
 
 type PromotionMockData struct {
 	Promotion db.Promotion
-	Error          error
+	Error     error
 }
 
 type PromotionsMockData struct {
 	Promotions []db.Promotion
-	Error           error
+	Error      error
 }
 
 func (r *MockRepositoryService) CreatePromotion(ctx context.Context, arg db.CreatePromotionParams) (db.Promotion, error) {

@@ -3,8 +3,8 @@ package geom_test
 import (
 	"testing"
 
+	"github.com/gaia-charge/go-datastore/pkg/geom"
 	"github.com/paulmach/orb/geojson"
-	"github.com/satimoto/go-datastore/pkg/geom"
 )
 
 func TestNullGeometry(t *testing.T) {

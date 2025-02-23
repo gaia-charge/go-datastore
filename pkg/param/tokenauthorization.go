@@ -1,8 +1,8 @@
 package param
 
 import (
+	"github.com/gaia-charge/go-datastore/pkg/db"
 	"github.com/google/uuid"
-	"github.com/satimoto/go-datastore/pkg/db"
 )
 
 func NewCreateTokenAuthorizationParams(tokenID int64) db.CreateTokenAuthorizationParams {
@@ -16,8 +16,8 @@ func NewCreateTokenAuthorizationParams(tokenID int64) db.CreateTokenAuthorizatio
 func NewUpdateTokenAuthorizationParams(tokenAuthorization db.TokenAuthorization) db.UpdateTokenAuthorizationByAuthorizationIDParams {
 	return db.UpdateTokenAuthorizationByAuthorizationIDParams{
 		AuthorizationID: tokenAuthorization.AuthorizationID,
-		Authorized: tokenAuthorization.Authorized,
-		CountryCode: tokenAuthorization.CountryCode,
-		PartyID: tokenAuthorization.PartyID,
+		Authorized:      tokenAuthorization.Authorized,
+		CountryCode:     tokenAuthorization.CountryCode,
+		PartyID:         tokenAuthorization.PartyID,
 	}
 }

@@ -3,7 +3,7 @@ package param
 import (
 	"time"
 
-	"github.com/satimoto/go-datastore/pkg/db"
+	"github.com/gaia-charge/go-datastore/pkg/db"
 )
 
 func NewUpdateSessionByUidParams(session db.Session) db.UpdateSessionByUidParams {

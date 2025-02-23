@@ -1,7 +1,7 @@
 package param
 
 import (
-	"github.com/satimoto/go-datastore/pkg/db"
+	"github.com/gaia-charge/go-datastore/pkg/db"
 )
 
 func NewUpdateEvseByUidParams(evse db.Evse) db.UpdateEvseByUidParams {

@@ -3,7 +3,7 @@ package mocks
 import (
 	"context"
 
-	"github.com/satimoto/go-datastore/pkg/db"
+	"github.com/gaia-charge/go-datastore/pkg/db"
 )
 
 func (r *MockRepositoryService) DeleteTariffAltTexts(ctx context.Context, tariffID int64) error {

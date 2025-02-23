@@ -1,6 +1,6 @@
 package param
 
-import "github.com/satimoto/go-datastore/pkg/db"
+import "github.com/gaia-charge/go-datastore/pkg/db"
 
 func NewUpdateCredentialParams(credential db.Credential) db.UpdateCredentialParams {
 	return db.UpdateCredentialParams{

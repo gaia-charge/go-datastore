@@ -3,7 +3,7 @@ package param
 import (
 	"time"
 
-	"github.com/satimoto/go-datastore/pkg/db"
+	"github.com/gaia-charge/go-datastore/pkg/db"
 )
 
 func NewCreateEvseStatusPeriodParams(evse db.Evse, lastUpdated time.Time) db.CreateEvseStatusPeriodParams {

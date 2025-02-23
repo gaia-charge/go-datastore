@@ -1,8 +1,8 @@
 package mocks
 
 import (
-	"github.com/satimoto/go-datastore/pkg/calibration"
-	mocks "github.com/satimoto/go-datastore/pkg/db/mocks"
+	"github.com/gaia-charge/go-datastore/pkg/calibration"
+	mocks "github.com/gaia-charge/go-datastore/pkg/db/mocks"
 )
 
 func NewRepository(repositoryService *mocks.MockRepositoryService) calibration.CalibrationRepository {

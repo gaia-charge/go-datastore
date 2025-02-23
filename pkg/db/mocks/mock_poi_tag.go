@@ -3,7 +3,7 @@ package mocks
 import (
 	"context"
 
-	"github.com/satimoto/go-datastore/pkg/db"
+	"github.com/gaia-charge/go-datastore/pkg/db"
 )
 
 func (r *MockRepositoryService) ListPoiTags(ctx context.Context, poiID int64) ([]db.Tag, error) {

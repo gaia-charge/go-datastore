@@ -10,7 +10,7 @@ import (
 	"database/sql"
 	"time"
 
-	"github.com/satimoto/go-datastore/pkg/geom"
+	"github.com/gaia-charge/go-datastore/pkg/geom"
 )
 
 const createPoi = `-- name: CreatePoi :one
