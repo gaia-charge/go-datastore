@@ -20,9 +20,10 @@ INSERT INTO credentials (
     country_code, 
     party_id, 
     is_hub,
+    is_base64,
     last_updated
-  ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
-  RETURNING id, client_token, server_token, url, country_code, party_id, is_hub, last_updated, business_detail_id, version_id, is_available
+  ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+  RETURNING id, client_token, server_token, url, country_code, party_id, is_hub, last_updated, business_detail_id, version_id, is_available, is_base64
 `
 
 type CreateCredentialParams struct {
@@ -33,6 +34,7 @@ type CreateCredentialParams struct {
 	CountryCode      string         `db:"country_code" json:"countryCode"`
 	PartyID          string         `db:"party_id" json:"partyId"`
 	IsHub            bool           `db:"is_hub" json:"isHub"`
+	IsBase64         bool           `db:"is_base64" json:"isBase64"`
 	LastUpdated      time.Time      `db:"last_updated" json:"lastUpdated"`
 }
 
@@ -45,6 +47,7 @@ func (q *Queries) CreateCredential(ctx context.Context, arg CreateCredentialPara
 		arg.CountryCode,
 		arg.PartyID,
 		arg.IsHub,
+		arg.IsBase64,
 		arg.LastUpdated,
 	)
 	var i Credential
@@ -60,6 +63,7 @@ func (q *Queries) CreateCredential(ctx context.Context, arg CreateCredentialPara
 		&i.BusinessDetailID,
 		&i.VersionID,
 		&i.IsAvailable,
+		&i.IsBase64,
 	)
 	return i, err
 }
@@ -75,7 +79,7 @@ func (q *Queries) DeleteCredential(ctx context.Context, id int64) error {
 }
 
 const getCredential = `-- name: GetCredential :one
-SELECT id, client_token, server_token, url, country_code, party_id, is_hub, last_updated, business_detail_id, version_id, is_available FROM credentials
+SELECT id, client_token, server_token, url, country_code, party_id, is_hub, last_updated, business_detail_id, version_id, is_available, is_base64 FROM credentials
   WHERE id = $1
 `
 
@@ -94,12 +98,13 @@ func (q *Queries) GetCredential(ctx context.Context, id int64) (Credential, erro
 		&i.BusinessDetailID,
 		&i.VersionID,
 		&i.IsAvailable,
+		&i.IsBase64,
 	)
 	return i, err
 }
 
 const getCredentialByPartyAndCountryCode = `-- name: GetCredentialByPartyAndCountryCode :one
-SELECT id, client_token, server_token, url, country_code, party_id, is_hub, last_updated, business_detail_id, version_id, is_available FROM credentials
+SELECT id, client_token, server_token, url, country_code, party_id, is_hub, last_updated, business_detail_id, version_id, is_available, is_base64 FROM credentials
   WHERE party_id = $1 AND country_code = $2
 `
 
@@ -123,12 +128,13 @@ func (q *Queries) GetCredentialByPartyAndCountryCode(ctx context.Context, arg Ge
 		&i.BusinessDetailID,
 		&i.VersionID,
 		&i.IsAvailable,
+		&i.IsBase64,
 	)
 	return i, err
 }
 
 const getCredentialByServerToken = `-- name: GetCredentialByServerToken :one
-SELECT id, client_token, server_token, url, country_code, party_id, is_hub, last_updated, business_detail_id, version_id, is_available FROM credentials
+SELECT id, client_token, server_token, url, country_code, party_id, is_hub, last_updated, business_detail_id, version_id, is_available, is_base64 FROM credentials
   WHERE server_token = $1
 `
 
@@ -147,12 +153,13 @@ func (q *Queries) GetCredentialByServerToken(ctx context.Context, serverToken sq
 		&i.BusinessDetailID,
 		&i.VersionID,
 		&i.IsAvailable,
+		&i.IsBase64,
 	)
 	return i, err
 }
 
 const listCredentials = `-- name: ListCredentials :many
-SELECT id, client_token, server_token, url, country_code, party_id, is_hub, last_updated, business_detail_id, version_id, is_available FROM credentials
+SELECT id, client_token, server_token, url, country_code, party_id, is_hub, last_updated, business_detail_id, version_id, is_available, is_base64 FROM credentials
   ORDER BY id
 `
 
@@ -177,6 +184,7 @@ func (q *Queries) ListCredentials(ctx context.Context) ([]Credential, error) {
 			&i.BusinessDetailID,
 			&i.VersionID,
 			&i.IsAvailable,
+			&i.IsBase64,
 		); err != nil {
 			return nil, err
 		}
@@ -200,11 +208,12 @@ UPDATE credentials SET (
     party_id, 
     is_available,
     is_hub,
+    is_base64,
     version_id,
     last_updated
-  ) = ($2, $3, $4, $5, $6, $7, $8, $9, $10)
+  ) = ($2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
   WHERE id = $1
-  RETURNING id, client_token, server_token, url, country_code, party_id, is_hub, last_updated, business_detail_id, version_id, is_available
+  RETURNING id, client_token, server_token, url, country_code, party_id, is_hub, last_updated, business_detail_id, version_id, is_available, is_base64
 `
 
 type UpdateCredentialParams struct {
@@ -216,6 +225,7 @@ type UpdateCredentialParams struct {
 	PartyID     string         `db:"party_id" json:"partyId"`
 	IsAvailable bool           `db:"is_available" json:"isAvailable"`
 	IsHub       bool           `db:"is_hub" json:"isHub"`
+	IsBase64    bool           `db:"is_base64" json:"isBase64"`
 	VersionID   sql.NullInt64  `db:"version_id" json:"versionId"`
 	LastUpdated time.Time      `db:"last_updated" json:"lastUpdated"`
 }
@@ -230,6 +240,7 @@ func (q *Queries) UpdateCredential(ctx context.Context, arg UpdateCredentialPara
 		arg.PartyID,
 		arg.IsAvailable,
 		arg.IsHub,
+		arg.IsBase64,
 		arg.VersionID,
 		arg.LastUpdated,
 	)
@@ -246,6 +257,7 @@ func (q *Queries) UpdateCredential(ctx context.Context, arg UpdateCredentialPara
 		&i.BusinessDetailID,
 		&i.VersionID,
 		&i.IsAvailable,
+		&i.IsBase64,
 	)
 	return i, err
 }

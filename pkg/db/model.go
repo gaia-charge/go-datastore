@@ -1258,6 +1258,7 @@ type Credential struct {
 	BusinessDetailID int64          `db:"business_detail_id" json:"businessDetailId"`
 	VersionID        sql.NullInt64  `db:"version_id" json:"versionId"`
 	IsAvailable      bool           `db:"is_available" json:"isAvailable"`
+	IsBase64         bool           `db:"is_base64" json:"isBase64"`
 }
 
 type Currency struct {

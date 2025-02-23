@@ -7,8 +7,9 @@ INSERT INTO credentials (
     country_code, 
     party_id, 
     is_hub,
+    is_base64,
     last_updated
-  ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+  ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
   RETURNING *;
 
 -- name: DeleteCredential :exec
@@ -40,8 +41,9 @@ UPDATE credentials SET (
     party_id, 
     is_available,
     is_hub,
+    is_base64,
     version_id,
     last_updated
-  ) = ($2, $3, $4, $5, $6, $7, $8, $9, $10)
+  ) = ($2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
   WHERE id = $1
   RETURNING *;
